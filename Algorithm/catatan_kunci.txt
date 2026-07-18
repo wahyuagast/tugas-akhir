@@ -1,0 +1,10 @@
+DARI_DATA_PENGUJIAN = {
+    "airplane.tiff": 12684744,
+    "baboon.tiff": 8494564,
+    "bridge.tiff": 7487910,
+    "cameraman.tiff": 7754362,
+    "clock.tiff": 12188403,
+    "lena.tiff": 8127018,
+    "moon.tiff": 8372881,
+    "ship.tiff": 8500829,
+}
