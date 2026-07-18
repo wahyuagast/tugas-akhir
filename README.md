@@ -56,3 +56,9 @@ pip install numpy opencv-python
 ## Catatan Tambahan
 *   Program ini membaca citra dalam mode *Grayscale* (skala abu-abu) secara otomatis menggunakan `cv2.IMREAD_GRAYSCALE`.
 *   File `catatan_kunci.txt` bersifat rahasia dan wajib disertakan saat melakukan dekripsi agar kunci dinamis dapat direkonstruksi secara presisi. Jika file ini hilang, program akan mencoba menggunakan *fallback parameter* berdasarkan jumlah nilai citra cipher, yang mungkin tidak akurat.
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah **MIT License**. Anda bebas menggunakan, memodifikasi, dan mendistribusikan kode ini sesuai dengan ketentuan lisensi.
+
+Lihat file [LICENSE](LICENSE) untuk detail lengkap.
