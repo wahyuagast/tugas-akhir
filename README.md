@@ -1,27 +1,38 @@
-# Enkripsi Gambar Berbasis *Chaotic Logistic Map* dan *Linear Feedback Shift Register*
+# Image Encryption Using *Chaotic Logistic Map* and *Linear Feedback Shift Register* (LFSR)
 
-Repositori ini berisi implementasi algoritma enkripsi dan dekripsi citra digital sebagai bagian dari Tugas Akhir. Sistem dirancang untuk mengamankan citra (*image encryption*) menggunakan kombinasi *Chaos Theory* melalui *Chaotic Logistic Map* dan pembangkit bilangan acak semu (*Pseudo-Random Number Generator* / PRNG) berbasis *Linear Feedback Shift Register* (LFSR).
-
-## Fitur Utama
-
-* **Kunci Dinamis (*Plaintext-Dependent*)**
-  Nilai awal (*seed*) pada *Logistic Map* dimodifikasi berdasarkan total nilai piksel citra asli. Dengan demikian, perubahan sekecil apa pun pada citra (bahkan satu piksel) akan menghasilkan parameter kunci yang berbeda.
-
-* **Chaotic Logistic Map**
-  Digunakan untuk menghasilkan deret *chaos* yang berperan dalam proses *confusion* (pengacakan posisi piksel).
-
-* **Linear Feedback Shift Register (LFSR)**
-  Digunakan untuk menghasilkan *key stream* pseudo-acak yang digunakan dalam proses difusi.
-
-* **Proses Difusi Ganda**
-  Menggunakan kombinasi *Forward Diffusion* dan *Backward Diffusion* untuk menyebarkan perubahan nilai piksel secara merata ke seluruh citra.
-
-* **Dekripsi Deterministik**
-  Citra terenkripsi dapat dipulihkan kembali secara utuh apabila parameter kunci dinamis berhasil direkonstruksi.
+🇮🇩 Versi Bahasa Indonesia tersedia di bawah halaman ini.
 
 ---
 
-## Struktur Direktori
+## English
+
+### Overview
+
+This repository contains an implementation of an image encryption and decryption algorithm developed as part of an undergraduate thesis project. The system secures digital images (*image encryption*) using a combination of *Chaos Theory* through a *Chaotic Logistic Map* and a *Pseudo-Random Number Generator* (PRNG) based on a *Linear Feedback Shift Register* (LFSR).
+
+### Key Features
+
+* **Dynamic Key (*Plaintext-Dependent*)**
+
+  * The initial *seed* of the *Logistic Map* is modified according to the total pixel intensity of the original image. Even a one-pixel change produces a different key parameter.
+
+* **Chaotic Logistic Map**
+
+  * Generates a chaotic sequence used in the *confusion* stage (*pixel shuffling*).
+
+* **Linear Feedback Shift Register (LFSR)**
+
+  * Generates a pseudo-random *key stream* used during diffusion.
+
+* **Double Diffusion Process**
+
+  * Combines *Forward Diffusion* and *Backward Diffusion* to distribute pixel influence across the entire image.
+
+* **Deterministic Decryption**
+
+  * The encrypted image can be reconstructed exactly when the dynamic key parameters are available.
+
+### Directory Structure
 
 ```text
 .
@@ -38,187 +49,167 @@ Repositori ini berisi implementasi algoritma enkripsi dan dekripsi citra digital
 └── README.md
 ```
 
-### Keterangan
+### Requirements
 
-* **`data/plaintext/`**
-  Menyimpan citra asli yang akan dienkripsi.
-
-* **`data/ciphertext/`**
-  Menyimpan hasil enkripsi citra.
-
-* **`data/decrypted/`**
-  Menyimpan hasil dekripsi citra.
-
-* **`encryption.py`**
-  Skrip utama untuk proses enkripsi.
-
-* **`decryption.py`**
-  Skrip utama untuk proses dekripsi.
-
-* **`logistic_map.py`**
-  Implementasi fungsi *Chaotic Logistic Map*.
-
-* **`lfsr.py`**
-  Implementasi fungsi *Linear Feedback Shift Register*.
-
-* **`catatan_kunci.txt`**
-  Berkas yang dibuat otomatis untuk menyimpan informasi yang diperlukan dalam rekonstruksi parameter kunci saat proses dekripsi.
-
----
-
-## Prasyarat
-
-Pastikan lingkungan pengembangan telah memenuhi kebutuhan berikut:
-
-* Python 3.8 atau lebih baru
+* Python 3.8+
 * NumPy
 * OpenCV-Python
 
-### Instalasi Dependensi
-
-Menggunakan pip:
-
-```bash
-pip install numpy opencv-python
-```
-
-Atau menggunakan file `requirements.txt`:
+Installation:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Contoh isi `requirements.txt`:
+### Usage
 
-```text
-numpy
-opencv-python
-```
-
----
-
-## Cara Penggunaan
-
-### 1. Proses Enkripsi
-
-1. Buat folder:
-
-```text
-data/plaintext/
-```
-
-2. Masukkan citra yang akan dienkripsi ke dalam folder tersebut.
-
-   Format yang didukung:
-
-   * `.tif`
-   * `.tiff`
-   * `.png`
-   * `.jpg`
-   * `.jpeg`
-
-3. Jalankan proses enkripsi:
+#### Encryption
 
 ```bash
 python encryption.py
 ```
 
-4. Hasil akan tersimpan pada:
+Input images should be placed in:
+
+```text
+data/plaintext/
+```
+
+Encrypted images will be generated in:
 
 ```text
 data/ciphertext/
 ```
 
-5. Program akan membuat file:
-
-```text
-catatan_kunci.txt
-```
-
-yang diperlukan untuk proses dekripsi.
-
----
-
-### 2. Proses Dekripsi
-
-1. Pastikan citra terenkripsi tersedia di folder:
-
-```text
-data/ciphertext/
-```
-
-2. Pastikan file:
-
-```text
-catatan_kunci.txt
-```
-
-berada pada direktori yang sama dengan skrip.
-
-3. Jalankan proses dekripsi:
+#### Decryption
 
 ```bash
 python decryption.py
 ```
 
-4. Hasil pemulihan citra akan disimpan pada:
+Decrypted images will be generated in:
 
 ```text
 data/decrypted/
 ```
 
-dengan format nama:
+### Notes
+
+* Images are automatically processed in *grayscale* mode.
+* The file `catatan_kunci.txt` is required to reconstruct dynamic key parameters during decryption.
+* Missing key records may result in inaccurate reconstruction.
+
+### Security Notice
+
+⚠️ This implementation was developed for academic and research purposes. Additional cryptanalysis and security evaluation are recommended before production use.
+
+---
+
+# Enkripsi Gambar Berbasis *Chaotic Logistic Map* dan *Linear Feedback Shift Register* (LFSR)
+
+## Bahasa Indonesia
+
+### Deskripsi
+
+Repositori ini berisi implementasi algoritma enkripsi dan dekripsi citra digital sebagai bagian dari Tugas Akhir. Sistem dirancang untuk mengamankan citra (*image encryption*) menggunakan kombinasi *Chaos Theory* melalui *Chaotic Logistic Map* dan pembangkit bilangan acak semu (*Pseudo-Random Number Generator* / PRNG) berbasis *Linear Feedback Shift Register* (LFSR).
+
+### Fitur Utama
+
+* **Kunci Dinamis (*Plaintext-Dependent*)**
+
+  * Nilai awal (*seed*) dimodifikasi berdasarkan total nilai piksel citra asli.
+
+* **Chaotic Logistic Map**
+
+  * Digunakan untuk menghasilkan deret *chaos* pada proses *confusion*.
+
+* **Linear Feedback Shift Register (LFSR)**
+
+  * Digunakan untuk menghasilkan *key stream* pseudo-acak.
+
+* **Proses Difusi Ganda**
+
+  * Menggunakan *Forward Diffusion* dan *Backward Diffusion*.
+
+* **Dekripsi Deterministik**
+
+  * Citra dapat dipulihkan kembali secara utuh jika parameter kunci tersedia.
+
+### Struktur Direktori
 
 ```text
-decrypted_nama_file.ext
+.
+├── data/
+│   ├── plaintext/
+│   ├── ciphertext/
+│   └── decrypted/
+├── encryption.py
+├── decryption.py
+├── logistic_map.py
+├── lfsr.py
+├── catatan_kunci.txt
+├── requirements.txt
+└── README.md
 ```
 
----
+### Prasyarat
 
-## Alur Algoritma
+* Python 3.8+
+* NumPy
+* OpenCV-Python
 
-### Enkripsi
+Instalasi:
 
-1. Membaca citra *grayscale*.
-2. Menghitung nilai *plaintext-dependent factor*.
-3. Memodifikasi *seed* *Logistic Map*.
-4. Menghasilkan deret *chaos*.
-5. Melakukan *confusion* (pengacakan posisi piksel).
-6. Menghasilkan *key stream* menggunakan LFSR.
-7. Melakukan *Forward Diffusion*.
-8. Melakukan *Backward Diffusion*.
-9. Menyimpan citra terenkripsi.
+```bash
+pip install -r requirements.txt
+```
 
-### Dekripsi
+### Cara Penggunaan
 
-1. Membaca citra terenkripsi.
-2. Meregenerasi parameter *chaos*.
-3. Meregenerasi *key stream* LFSR.
-4. Melakukan invers *Backward Diffusion*.
-5. Melakukan invers *Forward Diffusion*.
-6. Melakukan *de-shuffling*.
-7. Mengembalikan citra asli.
+#### Enkripsi
 
----
+```bash
+python encryption.py
+```
 
-## Catatan Penting
+Masukkan citra ke:
 
-* Program membaca citra menggunakan mode *grayscale* (`cv2.IMREAD_GRAYSCALE`).
-* File `catatan_kunci.txt` diperlukan untuk merekonstruksi parameter kunci secara akurat saat dekripsi.
-* Jika file tersebut tidak tersedia, program akan menggunakan mekanisme *fallback* yang mungkin menghasilkan hasil dekripsi yang tidak sesuai dengan citra asli.
+```text
+data/plaintext/
+```
+
+Hasil enkripsi akan tersimpan di:
+
+```text
+data/ciphertext/
+```
+
+#### Dekripsi
+
+```bash
+python decryption.py
+```
+
+Hasil dekripsi akan tersimpan di:
+
+```text
+data/decrypted/
+```
+
+### Catatan
+
+* Program membaca citra dalam mode *grayscale*.
+* File `catatan_kunci.txt` diperlukan untuk merekonstruksi parameter kunci saat dekripsi.
+* Jika file tersebut hilang, hasil dekripsi mungkin tidak identik dengan citra asli.
 
 ### Keamanan
 
-⚠️ File `catatan_kunci.txt` mengandung informasi yang digunakan dalam rekonstruksi kunci dinamis. Untuk penggunaan pada data sensitif, hindari membagikan file ini kepada pihak yang tidak berwenang.
-
-⚠️ Implementasi ini dikembangkan untuk tujuan penelitian dan akademik. Sebelum digunakan pada sistem produksi atau aplikasi keamanan nyata, diperlukan evaluasi kriptanalisis yang lebih mendalam.
+⚠️ Implementasi ini dikembangkan untuk tujuan penelitian dan akademik. Sebelum digunakan pada sistem produksi, diperlukan evaluasi keamanan yang lebih mendalam.
 
 ---
 
-## Lisensi
+## License
 
-Proyek ini dilisensikan di bawah **MIT License**.
+This project is licensed under the **MIT License**.
 
-Anda bebas menggunakan, memodifikasi, mendistribusikan, dan mengembangkan proyek ini sesuai ketentuan yang tercantum dalam file `LICENSE`.
-
-Lihat file `LICENSE` untuk informasi lengkap.
+See the `LICENSE` file for details.
